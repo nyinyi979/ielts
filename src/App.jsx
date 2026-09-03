@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { topicBanks, wordBanks } from './data.js'
+import { academicTask1Templates, generalTask1Templates, task2Templates } from './writingTemplates.js'
 
 const NAV = [
   { id: 'writing', label: 'Writing', icon: 'pen' },
@@ -11,6 +12,8 @@ const NAV = [
 const PRACTICE = {
   writing: [
     { name: 'IELTS.org Academic sample tests', url: 'https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test', label: 'Official', note: 'Use these first for authentic Task 1 and Task 2 prompts and official familiarisation.' },
+    { name: 'IELTS.org General Training sample tests', url: 'https://ielts.org/take-a-test/preparation-resources/sample-test-questions/general-training-test', label: 'Official', note: 'Practise authentic letter prompts as well as General Training Task 2 essays.' },
+    { name: 'How IELTS Writing is marked', url: 'https://ielts.org/take-a-test/preparation-resources/writing-test-resources', label: 'Official', note: 'Official explanations of Task Achievement/Response, Coherence and Cohesion, vocabulary and grammar.' },
     { name: 'British Council free practice & mocks', url: 'https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests', label: 'Official partner', note: 'Timed Academic Writing practice plus IELTS Ready resources.' },
     { name: 'IDP official practice tests', url: 'https://ielts.idp.com/about/practice-tests/new-practice-tests', label: 'Official partner', note: 'Skill-specific IELTS practice tasks with answer material and familiarisation.' },
     { name: 'Cambridge Write & Improve', url: 'https://www.cambridgeenglish.org/learning-english/free-resources/write-and-improve/', label: 'Supplement', note: 'Useful for grammar, spelling and revision feedback. Do not treat its feedback as an IELTS band score.' },
@@ -58,6 +61,7 @@ function Icon({ name, size = 20 }) {
     clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
     target: <><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></>,
     reset: <><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></>,
+    copy: <><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></>,
   }
   return <svg {...common}>{paths[name]}</svg>
 }
@@ -194,6 +198,44 @@ function ExaminerGrid({ items }) {
   return <div className="examiner-grid">{items.map((x) => <Card key={x.title} title={x.title} eyebrow="EXAMINER LENS"><p>{x.text}</p><div className="do-line"><b>Train:</b> {x.train}</div></Card>)}</div>
 }
 
+function CopyTemplateButton({ template }) {
+  const [copied, setCopied] = useState(false)
+  const copy = async () => {
+    const text = `${template.title}\n\n${template.plan.map(([label, line]) => `${label}\n${line}`).join('\n\n')}\n\nExaminer note: ${template.examiner}`
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch {
+      setCopied(false)
+    }
+  }
+  return <button className="copy-btn" onClick={copy} aria-label={`Copy ${template.title} template`}><Icon name={copied ? 'check' : 'copy'} size={16}/>{copied ? 'Copied' : 'Copy template'}</button>
+}
+
+function TemplateCollection({ templates }) {
+  return <div className="template-collection">{templates.map((template, index) => <Accordion key={template.title} title={template.title} subtitle={`${template.tag} · ${template.useWhen}`} defaultOpen={index === 0}>
+    <div className="template-toolbar"><Badge>{template.tag}</Badge><CopyTemplateButton template={template}/></div>
+    <div className="paragraph-plan">{template.plan.map(([label, text]) => <div className="paragraph-step" key={label}><span>{label}</span><p>{text}</p></div>)}</div>
+    <Callout title="Examiner note" tone="amber">{template.examiner}</Callout>
+  </Accordion>)}</div>
+}
+
+function WritingTemplateLibrary() {
+  const groups = [
+    { id: 'academic', label: 'Academic Task 1', count: academicTask1Templates.length, templates: academicTask1Templates },
+    { id: 'general', label: 'General Task 1', count: generalTask1Templates.length, templates: generalTask1Templates },
+    { id: 'task2', label: 'Task 2 essays', count: task2Templates.length, templates: task2Templates },
+  ]
+  const [active, setActive] = useState('academic')
+  const selected = groups.find((group) => group.id === active)
+  return <div className="template-library">
+    <div className="template-tabs" role="tablist" aria-label="Writing template groups">{groups.map((group) => <button key={group.id} role="tab" aria-selected={active === group.id} className={active === group.id ? 'active' : ''} onClick={() => setActive(group.id)}><span>{group.label}</span><b>{group.count}</b></button>)}</div>
+    <div className="template-library-intro"><div><strong>{selected.label}</strong><span>Choose the closest task, replace every bracketed prompt, and change the wording to fit the question.</span></div><Badge tone="green">{selected.count} adaptable frameworks</Badge></div>
+    <TemplateCollection templates={selected.templates}/>
+  </div>
+}
+
 function WritingPage() {
   const essayTypes = [
     ['Advantages / disadvantages', 'Discuss both sides', 'Do not invent a personal position unless the prompt asks for it.'],
@@ -206,8 +248,8 @@ function WritingPage() {
     ['Mixed expository + opinion', 'Answer facts + position', 'Do not let the factual half hide the required opinion.'],
   ]
   return <>
-    <SkillHero icon="pen" kicker="Academic IELTS" title="Writing" intro="Write for the examiner: answer the exact task, organise clearly, develop relevant ideas and use accurate language. Templates below are flexible sentence jobs, not memorised essays." stats={[{value:'60',label:'minutes total'},{value:'150+',label:'Task 1 minimum'},{value:'250+',label:'Task 2 minimum'},{value:'2×',label:'Task 2 weight'}]} tags={[{label:'Examiner criteria',tone:'green'},{label:'Templates',tone:'blue'},{label:'Word-choice bank',tone:'amber'}]} />
-    <JumpBar items={[{id:'w-score',label:'What earns marks'},{id:'w-task1',label:'Task 1'},{id:'w-task2',label:'Task 2'},{id:'w-language',label:'Language'},{id:'w-drill',label:'Training'},{id:'w-practice',label:'Practice sites'}]} />
+    <SkillHero icon="pen" kicker="Academic + General Training" title="Writing" intro="Write for the examiner: answer the exact task, organise clearly, develop relevant ideas and use accurate language. Use the templates as flexible paragraph jobs, never as a memorised script." stats={[{value:'60',label:'minutes total'},{value:'150+',label:'Task 1 minimum'},{value:'250+',label:'Task 2 minimum'},{value:'2×',label:'Task 2 weight'}]} tags={[{label:'Examiner criteria',tone:'green'},{label:'23 full templates',tone:'blue'},{label:'Copy & adapt',tone:'amber'}]} />
+    <JumpBar items={[{id:'w-score',label:'What earns marks'},{id:'w-library',label:'All templates'},{id:'w-task1',label:'Academic Task 1'},{id:'w-general',label:'General Task 1'},{id:'w-task2',label:'Task 2'},{id:'w-language',label:'Language'},{id:'w-drill',label:'Training'}]} />
 
     <SectionTitle id="w-score" number="01" title="What the examiner rewards" text="Your job is not to sound 'advanced'. Your job is to be relevant, clear, sufficiently developed and accurately controlled." />
     <ExaminerGrid items={[
@@ -217,7 +259,11 @@ function WritingPage() {
       { title:'Grammar Range & Accuracy', text:'Use a mix of simple and complex structures with frequent error-free sentences. Complexity without control does not help.', train:'Practise 5–6 reliable complex patterns until automatic.' },
     ]}/>
 
-    <SectionTitle id="w-task1" number="02" title="Task 1 — visual report" text="The safest default is four paragraphs: Introduction → Overview → Details 1 → Details 2. No separate conclusion is needed." />
+    <SectionTitle id="w-library" number="02" title="Complete writing template library" text="Select your test and task type. Each framework shows the job of every paragraph, useful starter language and the mistake an examiner would notice first." />
+    <Callout title="Use templates safely" tone="blue">Memorise the <b>structure</b>, not entire sentences. Replace every bracketed part, answer the exact prompt, and vary the language naturally. A template cannot rescue an unclear overview, missing bullet point or underdeveloped idea.</Callout>
+    <WritingTemplateLibrary />
+
+    <SectionTitle id="w-task1" number="03" title="Academic Task 1 — visual report" text="The safest default is four paragraphs: Introduction → Overview → Details 1 → Details 2. No separate conclusion is needed." />
     <Callout title="Decision engine" tone="green">Classify the visual first: <b>dynamic</b> → change language; <b>static</b> → comparison/proportion; <b>process</b> → sequence; <b>map/plan</b> → location and change. Then choose two overview features and two detail groups.</Callout>
     <DataTable columns={['Visual type','Activate','Overview question']} rows={[
       ['Line / bar / table over time','change + comparison','What rises/falls most? What is highest/lowest? Any crossover or striking contrast?'],
@@ -239,11 +285,23 @@ function WritingPage() {
       <Accordion title="Dynamic charts" subtitle="change over time"><Template title="Pattern">At the beginning of the period, A stood at [x], compared with B at [y]. A then rose/fell [slightly/steadily/sharply] to [z], whereas B remained relatively stable. By [year], A had [final trend], while B [final trend].</Template><DataTable columns={['Function','Safe choices']} rows={[["Increase","rise, increase, grow, climb; surge for a large rapid rise"],["Decrease","fall, decline, drop; plunge/plummet for a large rapid fall"],["Stable","remain stable/unchanged, level off"],["Fluctuate","fluctuate between/around"],["Peak","peak at; reach a peak of"]]}/></Accordion>
       <Accordion title="Static charts / tables" subtitle="comparison at one time"><Template title="Pattern">A accounted for [x]%, compared with B at [y]%. C was roughly twice as high as D, at [x] and [y], respectively.</Template><p>Use <b>account for, make up, represent, the majority/minority, approximately, just over/under, higher/lower than, twice as high as</b>.</p></Accordion>
       <Accordion title="Process diagrams" subtitle="man-made or natural"><Template title="Overview">Overall, the process consists of [number] main stages, beginning with [first stage] and ending with [last stage].</Template><Template title="Body">Initially, [input] is [processed]. It is then [next step], after which [next stage]. Once this stage is complete, [next stage]. Finally, [output/end point].</Template><p>Man-made processes often favour passive forms; natural life cycles often sound more natural in active voice.</p></Accordion>
-      <Accordion title="Maps / plans" subtitle="before-after or proposed development"><Template title="Overview">Overall, the area became [more developed/residential/accessibile], with the most noticeable changes being [A] and [B]. [C], however, remained largely unchanged.</Template><Template title="Details">In [earlier year], [feature] was located [place]. By [later year], it had been replaced by / converted into [new feature], while a new [feature] had been constructed [location].</Template></Accordion>
+      <Accordion title="Maps / plans" subtitle="before-after or proposed development"><Template title="Overview">Overall, the area became [more developed/residential/accessible], with the most noticeable changes being [A] and [B]. [C], however, remained largely unchanged.</Template><Template title="Details">In [earlier year], [feature] was located [place]. By [later year], it had been replaced by / converted into [new feature], while a new [feature] had been constructed [location].</Template></Accordion>
     </div>
     <Accordion title="Task 1 precision traps" subtitle="easy marks to protect"><DataTable columns={['Meaning','Correct pattern','Example']} rows={[["Final value","rise/fall TO","rose to 80"],["Amount of change","rise/fall BY","rose by 20"],["Start → end","FROM A TO B","rose from 60 to 80"],["Noun amount","an increase OF","an increase of 20"],["Peak","peak AT / reach a peak OF","peaked at 90"],["Range","fluctuate BETWEEN A AND B","between 4% and 7%"]]}/></Accordion>
 
-    <SectionTitle id="w-task2" number="03" title="Task 2 — essay" text="Decode the prompt before generating ideas. The command wording decides your structure." />
+    <SectionTitle id="w-general" number="04" title="General Training Task 1 — letter" text="Your opening purpose, coverage of all three bullet points, letter format and consistent tone are central to Task Achievement." />
+    <div className="three-grid">
+      <Card title="Formal" eyebrow="UNKNOWN PERSON"><p><b>Use:</b> Dear Sir or Madam / Dear Mr or Ms [Surname].</p><p><b>Tone:</b> polite, direct and impersonal. Avoid slang and emotional exaggeration.</p><div className="do-line"><b>Close:</b> Yours faithfully (no name) or Yours sincerely (named person).</div></Card>
+      <Card title="Semi-formal" eyebrow="KNOWN PROFESSIONAL CONTACT"><p><b>Use:</b> Dear Mr or Ms [Surname].</p><p><b>Tone:</b> respectful and warm. Natural first-person language is appropriate.</p><div className="do-line"><b>Close:</b> Kind regards or Yours sincerely.</div></Card>
+      <Card title="Informal" eyebrow="FRIEND OR RELATIVE"><p><b>Use:</b> Dear [First name].</p><p><b>Tone:</b> friendly and personal. Contractions and natural phrasal verbs are welcome.</p><div className="do-line"><b>Close:</b> Best wishes, All the best or Take care.</div></Card>
+    </div>
+    <Accordion title="Universal letter planning method" subtitle="one clear purpose + three fully developed bullets" defaultOpen>
+      <div className="process-row">{['Identify reader','Choose tone','State purpose','Develop bullet 1','Develop bullet 2','Develop bullet 3','Check sign-off'].map((x,i)=><div className="process-step" key={x}><span>{i+1}</span>{x}</div>)}</div>
+      <Template title="Reliable five-part shape">Greeting → short purpose paragraph → one developed paragraph for each bullet point → suitable sign-off. Combine two bullets only when the message remains easy to follow.</Template>
+      <Callout title="Examiner check" tone="amber">If a bullet uses a plural such as <b>suggestions</b> or <b>problems</b>, provide more than one. Extend each bullet with a reason, detail, consequence or example.</Callout>
+    </Accordion>
+
+    <SectionTitle id="w-task2" number="05" title="Task 2 — essay" text="Task 2 is shared by Academic and General Training. Decode the prompt before generating ideas because the command wording decides your structure." />
     <Callout title="Prompt decoder" tone="green"><b>T</b> = topic. <b>Q</b> = exact question(s). <b>SF</b> = any special limitation. Then decide whether the task asks for information, an opinion, or both. If a position is required, state it clearly and keep it consistent.</Callout>
     <DataTable columns={['Question type','Your job','Examiner check']} rows={essayTypes}/>
     <Accordion title="Universal essay architecture" subtitle="four paragraphs is a strong default" defaultOpen>
@@ -265,17 +323,17 @@ function WritingPage() {
     </Accordion>
     <Callout title="Idea rule" tone="amber">Choose ideas you can <b>explain</b>. One relevant, well-developed idea is stronger than three shallow points. Examples should illustrate the idea, not replace explanation.</Callout>
 
-    <SectionTitle id="w-language" number="04" title="Word choices and idea banks" text="Learn a small core set first. Expand only after the core language is accurate and automatic." />
+    <SectionTitle id="w-language" number="06" title="Word choices and idea banks" text="Learn a small core set first. Expand only after the core language is accurate and automatic." />
     <WordExplorer mode="writing" />
     <Accordion title="Topic idea banks" subtitle="use these when your mind goes blank in Task 2">
       {topicBanks.map((t) => <div className="topic-bank" key={t.title}><h4>{t.title}</h4><div className="topic-bank-grid"><div><b>Idea angles</b><ul>{t.ideas.map((x) => <li key={x}>{x}</li>)}</ul></div><div><b>Useful vocabulary</b><div className="chips">{t.words.map((x) => <span className="chip" key={x}>{x}</span>)}</div></div></div></div>)}
     </Accordion>
 
-    <SectionTitle id="w-drill" number="05" title="Training system" text="Do not only write full essays. Isolate the skill that lost the mark, drill it, then return to full tasks." />
+    <SectionTitle id="w-drill" number="07" title="Training system" text="Do not only write full essays. Isolate the skill that lost the mark, drill it, then return to full tasks." />
     <div className="two-grid"><PracticeTimer presets={[20,40,60]}/><MasteryChecklist skill="writing" items={["I can identify every Task 2 question type quickly.","I can write a Task 1 overview without copying details.","I can group Task 1 data logically instead of describing everything.","I can develop a Task 2 main idea with reason + result/example.","I can state and maintain a clear opinion when required.","I can proofread my common grammar and spelling errors in the final minutes."]}/></div>
     <Accordion title="Best weekly Writing routine" defaultOpen><ol><li><b>2 × Task 1 overview drills:</b> write only introduction + overview in 5 minutes.</li><li><b>2 × Task 1 grouping drills:</b> plan Body 1/Body 2 without writing the full report.</li><li><b>2 × Task 2 planning drills:</b> identify prompt type, position and two developed ideas in 5 minutes.</li><li><b>1 × full Task 1</b> under 20 minutes.</li><li><b>1 × full Task 2</b> under 40 minutes.</li><li>Rewrite only the weakest paragraph after feedback.</li></ol></Accordion>
 
-    <SectionTitle id="w-practice" number="06" title="Websites to practise Writing" text="Use official tasks for test realism. Use supplementary tools only for language feedback." />
+    <SectionTitle id="w-practice" number="08" title="Websites to practise Writing" text="Use official tasks for test realism. Use supplementary tools only for language feedback." />
     <PracticeGrid skill="writing" />
   </>
 }
