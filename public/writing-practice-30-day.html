@@ -3,24 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IELTS Academic Writing — Band 7–9 Practice & Models</title>
+<meta name="theme-color" content="#183153">
+<meta name="description" content="30-day IELTS Academic Writing practice with real Task 1 visuals and Band 8-target model answers.">
+<title>IELTS Academic Writing — 30-Day Band 7–9 Practice</title>
+<script>
+(() => {
+  const saved = localStorage.getItem('ielts-theme')
+  const theme = saved === 'light' || saved === 'dark'
+    ? saved
+    : (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  document.documentElement.dataset.theme = theme
+})()
+</script>
 <style>
-:root{--b:#173f70;--b2:#285d9a;--bg:#f6f7fb;--c:#fff;--t:#192234;--m:#657086;--l:#dbe1ea;--s:#eef4fb;--green:#176b55;--greenbg:#edf8f4}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--t);font:16px/1.62 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{background:linear-gradient(135deg,var(--b),var(--b2));color:#fff;padding:42px 20px}.wrap,main{max-width:1040px;margin:auto}h1{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0 0 10px}.sub{font-size:18px;opacity:.93}.back{color:#fff;display:inline-block;margin-top:9px}main{padding:24px 18px 70px}.card{background:var(--c);border:1px solid var(--l);border-radius:16px;padding:22px;margin:18px 0;box-shadow:0 4px 18px #15243b0b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.day h2{margin:0 0 9px}.badges{margin-bottom:18px}.badge{display:inline-block;border:1px solid var(--l);border-radius:999px;padding:4px 9px;margin:0 5px 5px 0;font-size:12px;background:#fafbfd}.visual{margin:16px 0;padding:14px;border:1px solid var(--l);border-radius:12px;background:#fff}.visual img{display:block;max-width:100%;width:auto;height:auto;max-height:680px;margin:auto;border-radius:6px}.credit{font-size:12px;color:var(--m);margin:10px 2px 0}.credit a{color:var(--b)}.note,.focus{padding:13px 15px;border-left:4px solid var(--b);background:var(--s);border-radius:8px}.focus{margin-top:18px;border-left-color:var(--green);background:var(--greenbg)}small,.small-note{color:var(--m)}ol,ul{padding-left:22px}.task{font-size:17px}.tip{font-size:14px;color:var(--m);margin-bottom:14px}.task-divider{height:1px;background:var(--l);margin:28px 0}.model-answer{border:1px solid #cfd8e6;border-radius:12px;overflow:hidden;background:#fbfcfe;margin:14px 0}.model-answer summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 17px;font-weight:750;color:var(--b);background:#f2f6fb}.model-answer summary::-webkit-details-marker{display:none}.model-answer summary:before{content:'＋';font-size:19px;line-height:1;margin-right:2px}.model-answer[open] summary:before{content:'−'}.model-answer summary>span:first-of-type{flex:1}.wc{font-size:12px;font-weight:650;color:var(--m);white-space:nowrap;background:#fff;border:1px solid var(--l);padding:3px 8px;border-radius:999px}.model-body{padding:19px 20px 20px}.model-body>p{margin:0 0 15px}.model-body>p:last-of-type{margin-bottom:18px}.learn{border-top:1px solid var(--l);padding-top:15px;margin-top:5px;color:#334155}.learn>p{margin:7px 0}.small-note{font-size:13px}.source-list a{color:var(--b)}
-@media(max-width:720px){.grid{grid-template-columns:1fr}.card{padding:17px}.model-answer summary{align-items:flex-start}.wc{margin-top:1px}.visual{padding:8px}}@media print{body{background:#fff}.card{box-shadow:none}.model-answer{break-inside:avoid}.model-answer:not([open]) .model-body{display:block}}
+:root{
+  --bg:#f5f7fb;--surface:#ffffff;--surface-2:#f9fbfd;--text:#172033;--muted:#667085;--line:#dfe6ee;
+  --navy:#183153;--blue:#315efb;--blue-2:#e8efff;--green:#157347;--green-2:#e8f6ee;--amber:#9a6700;--amber-2:#fff4d6;
+  --red:#b42318;--red-2:#fdecea;--shadow:0 12px 34px rgba(24,49,83,.08);--radius:18px;--radius-sm:12px;--topbar:72px
+}
+:root[data-theme="dark"]{
+  --bg:#0e1420;--surface:#151d2b;--surface-2:#111927;--text:#edf2f7;--muted:#a7b1c2;--line:#2a3547;
+  --navy:#dce8ff;--blue:#7ea2ff;--blue-2:#1c2a48;--green:#63d69b;--green-2:#163126;--amber:#ffd36d;--amber-2:#352b12;
+  --red:#ff9c95;--red-2:#3b1e1f;--shadow:0 16px 40px rgba(0,0,0,.22)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.58}button{font:inherit;color:inherit}a{color:inherit}::selection{background:rgba(49,94,251,.18)}
+.topbar{position:sticky;top:0;z-index:50;height:var(--topbar);backdrop-filter:blur(16px);background:color-mix(in srgb,var(--surface) 88%,transparent);border-bottom:1px solid var(--line)}
+.topbar-inner{height:100%;max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}.brand{text-decoration:none;display:flex;align-items:center;gap:11px;min-width:220px}.brand-mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#315efb,#6d7bff);color:#fff;font-weight:900;font-size:20px;box-shadow:0 8px 20px rgba(49,94,251,.25)}.brand-copy{display:flex;flex-direction:column;line-height:1.12}.brand-copy b{font-size:15px}.brand-copy small{font-size:11px;color:var(--muted);margin-top:4px}.desktop-nav{display:flex;gap:6px;margin-left:auto}.desktop-nav a,.theme-toggle{border:1px solid transparent;background:transparent;border-radius:11px;padding:10px 13px;text-decoration:none;display:flex;align-items:center;gap:7px;color:var(--muted);font-weight:700;font-size:14px}.desktop-nav a:hover,.theme-toggle:hover{background:var(--surface-2);color:var(--text)}.desktop-nav a.active{background:var(--blue-2);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 18%,var(--line))}.theme-toggle{width:42px;height:42px;padding:0;justify-content:center;border-color:var(--line);background:var(--surface);cursor:pointer}.theme-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.theme-toggle .moon{display:none}:root[data-theme="dark"] .theme-toggle .sun{display:none}:root[data-theme="dark"] .theme-toggle .moon{display:block}
+.content{max-width:1180px;margin:0 auto;padding:34px 20px 110px}.skill-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.7fr);gap:34px;padding:38px;background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 10%,var(--surface)),var(--surface));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);margin-bottom:18px}.skill-hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-120px;top:-180px;background:radial-gradient(circle,color-mix(in srgb,var(--blue) 18%,transparent),transparent 68%);pointer-events:none}.hero-copy{position:relative;z-index:1}.hero-kicker{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--blue);font-size:13px;text-transform:uppercase;letter-spacing:.06em}.hero-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--blue-2)}.hero-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.skill-hero h1{font-size:clamp(38px,5vw,62px);line-height:1.02;margin:15px 0 12px;letter-spacing:-.045em}.skill-hero p{font-size:17px;max-width:720px;margin:0;color:var(--muted)}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;letter-spacing:.02em}.badge-blue{background:var(--blue-2);color:var(--blue)}.badge-green{background:var(--green-2);color:var(--green)}.badge-amber{background:var(--amber-2);color:var(--amber)}.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;align-self:center;position:relative;z-index:1}.stat{background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);border-radius:16px;padding:18px}.stat div{font-size:27px;font-weight:900;letter-spacing:-.03em;color:var(--navy)}.stat span{font-size:12px;color:var(--muted);font-weight:700}
+.jumpbar{position:sticky;top:calc(var(--topbar) + 10px);z-index:35;display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding:9px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:15px;margin:0 0 36px;box-shadow:0 6px 24px rgba(24,49,83,.05)}.jumpbar::-webkit-scrollbar{display:none}.jumpbar a{text-decoration:none;white-space:nowrap;padding:8px 11px;border-radius:9px;color:var(--muted);font-size:13px;font-weight:750}.jumpbar a:hover{color:var(--blue);background:var(--blue-2)}
+.section-title{display:flex;gap:16px;align-items:flex-start;margin:44px 0 18px}.section-title>span{flex:0 0 auto;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--navy);color:var(--surface);font-size:12px;font-weight:900}.section-title h2{margin:1px 0 3px;font-size:27px;letter-spacing:-.025em}.section-title p{margin:0;color:var(--muted);max-width:850px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 4px 16px rgba(24,49,83,.035)}.card h2,.card h3{letter-spacing:-.015em}.card p{color:var(--muted)}.two-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}.callout{display:grid;grid-template-columns:max-content 1fr;gap:14px;align-items:start;border:1px solid color-mix(in srgb,var(--blue) 20%,var(--line));border-radius:15px;padding:16px 18px;margin:14px 0;background:var(--blue-2)}.callout strong{font-size:13px}.callout div{color:var(--muted)}
+.day{margin:0 0 18px;padding:26px}.day h2{margin:0;font-size:27px}.day-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:18px}.day .badges{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0}.day .badges .badge{background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}.day .badges .badge:last-child{background:var(--blue-2);border-color:color-mix(in srgb,var(--blue) 18%,var(--line));color:var(--blue)}.day h3{margin:24px 0 10px;font-size:20px}.task{font-size:16px;color:var(--text)!important;background:var(--surface-2);border:1px solid var(--line);border-radius:13px;padding:15px 17px;margin:13px 0}.tip{font-size:13px;color:var(--muted);margin:11px 2px 14px}.visual{margin:14px 0;padding:16px;border:1px solid var(--line);border-radius:15px;background:#fff}.visual img{display:block;max-width:100%;width:auto;height:auto;max-height:680px;margin:auto;border-radius:7px}.credit{font-size:11px;color:#667085;margin:10px 2px 0}.credit a{color:#315efb}.task-divider{height:1px;background:var(--line);margin:30px 0}.focus{padding:15px 17px;border:1px solid color-mix(in srgb,var(--green) 20%,var(--line));background:var(--green-2);border-radius:15px;margin-top:18px;color:var(--muted)}.focus b{color:var(--green)}
+.model-answer{border:1px solid var(--line);border-radius:15px;background:var(--surface);overflow:hidden;margin:12px 0}.model-answer summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:16px 18px;color:var(--text);font-weight:800}.model-answer summary::-webkit-details-marker{display:none}.model-answer summary:before{content:'›';width:26px;height:26px;display:grid;place-items:center;border-radius:8px;background:var(--blue-2);color:var(--blue);font-size:21px;line-height:1;transition:.2s transform;flex:0 0 auto}.model-answer[open] summary:before{transform:rotate(90deg)}.model-answer summary:hover{background:var(--surface-2)}.model-answer summary>span:first-of-type{flex:1}.wc{font-size:11px;font-weight:800;color:var(--muted);white-space:nowrap;background:var(--surface-2);border:1px solid var(--line);padding:4px 8px;border-radius:999px}.model-body{border-top:1px solid var(--line);padding:20px}.model-body>p{margin:0 0 15px;color:var(--text);max-width:850px}.model-body>p:last-of-type{margin-bottom:18px}.learn{border-top:1px solid var(--line);padding:16px 17px 4px;margin-top:6px;background:var(--surface-2);border-radius:12px;color:var(--muted)}.learn>b{color:var(--text)}.learn p{margin:7px 0}.small-note{font-size:12px;color:var(--muted)}
+.study-card ol,.study-card ul,.intro-card ol,.intro-card ul{padding-left:21px}.study-card li,.intro-card li{margin:7px 0}.source-list a{color:var(--blue);font-weight:700;text-decoration:none}.source-list a:hover{text-decoration:underline}.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:32px}.back-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--blue);font-weight:800;font-size:13px;margin-top:10px}.back-link:hover{text-decoration:underline}
+@media(max-width:900px){.skill-hero{grid-template-columns:1fr}.hero-stats{max-width:520px}.brand{min-width:auto}.brand-copy small{display:none}.desktop-nav a{padding:9px 10px}.desktop-nav a span{display:none}}
+@media(max-width:720px){:root{--topbar:64px}.topbar-inner{padding:0 13px;gap:10px}.brand-mark{width:35px;height:35px}.brand-copy{display:none}.desktop-nav{margin-left:auto;overflow:auto}.desktop-nav a{font-size:12px;padding:8px}.theme-toggle{width:38px;height:38px;flex:0 0 auto}.content{padding:22px 13px 80px}.skill-hero{padding:25px 21px;border-radius:22px}.skill-hero h1{font-size:38px}.hero-stats{grid-template-columns:repeat(2,1fr)}.stat{padding:14px}.stat div{font-size:23px}.jumpbar{top:calc(var(--topbar) + 7px);margin-bottom:26px}.section-title{margin-top:34px}.section-title h2{font-size:24px}.two-grid{grid-template-columns:1fr}.day{padding:18px}.day h2{font-size:24px}.visual{padding:8px;overflow:auto}.model-answer summary{align-items:flex-start;padding:14px}.wc{margin-top:1px}.model-body{padding:16px}.task{padding:13px 14px}.callout{grid-template-columns:1fr}}
+@media(max-width:450px){.desktop-nav a:nth-child(n+3){display:none}.hero-stats{grid-template-columns:1fr 1fr}.skill-hero h1{font-size:34px}.day .badges{gap:5px}.model-answer summary{gap:8px}.wc{white-space:normal;text-align:center;line-height:1.25}}
+@media print{.topbar,.jumpbar,.theme-toggle{display:none!important}.content{padding:0}.skill-hero,.card{box-shadow:none}.model-answer:not([open]) .model-body{display:block}.model-answer{break-inside:avoid}.day{break-before:page}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><h1>IELTS Academic Writing<br>Band 7–9 Practice & Models</h1><div class="sub">30 days · Real Task 1 visuals · 30 Task 2 essays · model answers you can open when ready</div><a class="back" href="./">← Back to IELTS Master Guide</a></div></header>
-<main>
-<section class="card"><h2>How to use this page</h2><div class="grid"><div><h3>Practise first</h3><ul><li><b>Task 1:</b> 20 minutes · 150+ words</li><li><b>Task 2:</b> 40 minutes · 250+ words</li><li>Plan before you open the model answer.</li><li>Compare decisions and paragraph jobs, not individual fancy words.</li></ul></div><div><h3>What the models target</h3><ul><li>A clear Task 1 overview and selective comparisons</li><li>A clear, developed Task 2 position</li><li>Natural progression without excessive linking phrases</li><li>Precise vocabulary rather than forced “advanced” words</li><li>Varied grammar that stays controlled</li></ul></div></div><p class="note"><b>Important:</b> These are study models written to demonstrate features associated with strong IELTS Writing performance; they are not official IELTS answers and no exact band score can be guaranteed. The Task 1 visuals are reusable charts and diagrams from Wikimedia Commons and Our World in Data, with source links under each image.</p></section>
-<section class="card"><div class="grid"><div><h2>Task 1 structure</h2><ol><li>Paraphrase what the visual shows.</li><li>Give a real overview: the 2–3 features that matter most.</li><li>Group related details and compare them.</li><li>Use numbers selectively; do not narrate every point.</li></ol></div><div><h2>Task 2 structure</h2><ol><li>Answer the exact question in the introduction.</li><li>Give each body paragraph a clear purpose.</li><li>Explain why the idea matters before adding an example.</li><li>End with a conclusion that matches the argument you actually made.</li></ol></div></div></section>
-<section class="card"><h2>Why these models are written this way</h2><p>IELTS assesses Task Achievement/Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. Stronger bands require relevant coverage, clear development, effective organisation, precise and flexible language, and increasingly strong grammatical control. Task 2 also carries twice the weight of Task 1 in the Writing score.</p><p class="source-list"><a href="https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf" target="_blank" rel="noreferrer">Official IELTS Writing Band Descriptors</a> · <a href="https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing" target="_blank" rel="noreferrer">Official Academic Writing format</a> · <a href="https://www.ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test" target="_blank" rel="noreferrer">Official sample tasks and responses</a></p></section>
-<div id="days"></div>
-<section class="card"><h2>How to study the model answers</h2><ol><li>Write or plan the question before opening the accordion.</li><li>Underline the model's thesis or overview.</li><li>Write 3–5 words beside each paragraph describing its job.</li><li>Circle useful <em>collocations</em>, not impressive-looking isolated words.</li><li>Close the answer and rewrite the same argument in your own language.</li><li>One week later, answer the question again under full timing.</li></ol><p class="focus"><b>Do not memorise whole essays.</b> Reproducing memorised language can make your response less flexible and may fail to answer the exact task. Learn the thinking pattern instead.</p></section>
+<nav class="topbar" aria-label="IELTS Master Guide navigation">
+  <div class="topbar-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark">I</span>
+      <span class="brand-copy"><b>IELTS Master Guide</b><small>Exam-focused study system</small></span>
+    </a>
+    <div class="desktop-nav">
+      <a class="active" href="./#/writing">Writing</a>
+      <a href="./#/reading">Reading</a>
+      <a href="./#/listening">Listening</a>
+      <a href="./#/speaking">Speaking</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle light/dark mode">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
+    </button>
+  </div>
+</nav>
+<main class="content">
+  <header class="skill-hero" id="top">
+    <div class="hero-copy">
+      <div class="hero-kicker"><span class="hero-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></span>Academic Writing · 30-day training</div>
+      <h1>Band 7–9 Writing Practice</h1>
+      <p>Real Task 1 visuals, 30 Task 2 prompts and natural model answers designed around the same examiner criteria used throughout your main Writing guide.</p>
+      <div class="tag-row"><span class="badge badge-green">Real visuals</span><span class="badge badge-blue">Model answers</span><span class="badge badge-amber">Read after practising</span></div>
+      <a class="back-link" href="./#/writing">← Back to the full Writing guide</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div>30</div><span>practice days</span></div>
+      <div class="stat"><div>60</div><span>minutes per day</span></div>
+      <div class="stat"><div>150+</div><span>Task 1 words</span></div>
+      <div class="stat"><div>250+</div><span>Task 2 words</span></div>
+    </div>
+  </header>
+
+  <nav class="jumpbar" aria-label="Practice page sections">
+    <a href="#how">How to use</a><a href="#criteria">Band target</a><a href="#days">30 days</a><a href="#study">Study models</a><a href="#sources">Sources</a>
+  </nav>
+
+  <div class="section-title" id="how"><span>01</span><div><h2>How to use the 30-day pack</h2><p>Practise under exam timing first. Open the model only after you have planned or written your own response.</p></div></div>
+  <div class="two-grid">
+    <section class="card intro-card"><h3>Daily timing</h3><ul><li><b>Task 1:</b> 20 minutes, 150+ words.</li><li><b>Task 2:</b> 40 minutes, 250+ words.</li><li>Keep 3–5 minutes for checking.</li><li>On later days, complete both tasks without pausing.</li></ul></section>
+    <section class="card intro-card"><h3>Compare decisions, not fancy words</h3><ul><li>Find the Task 1 overview before reading mine.</li><li>Write two Task 2 main-idea sentences first.</li><li>Compare paragraph jobs and development.</li><li>Reuse useful collocations only when they fit naturally.</li></ul></section>
+  </div>
+  <div class="callout"><strong>Important</strong><div>These are study models, not official IELTS-rated scripts, so no exact band score can be guaranteed. The goal is to demonstrate the clarity, development, selection and language control associated with stronger performance.</div></div>
+
+  <div class="section-title" id="criteria"><span>02</span><div><h2>What the models target</h2><p>The same four assessment areas used in IELTS Writing: task achievement/response, coherence and cohesion, lexical resource, and grammatical range and accuracy.</p></div></div>
+  <div class="two-grid">
+    <section class="card intro-card"><h3>Task 1</h3><ol><li>Paraphrase what the visual shows.</li><li>Give a genuine overview of the most important features.</li><li>Group related details rather than describing everything.</li><li>Use figures selectively to support comparisons.</li></ol></section>
+    <section class="card intro-card"><h3>Task 2</h3><ol><li>Answer the exact question in the introduction.</li><li>Give each paragraph a clear purpose.</li><li>Explain ideas before adding examples.</li><li>Keep the position consistent through the conclusion.</li></ol></section>
+  </div>
+
+  <div class="section-title"><span>03</span><div><h2>Your 30 practice days</h2><p>Each day contains one real Task 1 visual and one Task 2 essay question. The model answers stay collapsed until you choose to open them.</p></div></div>
+  <div id="days"></div>
+
+  <div class="section-title" id="study"><span>04</span><div><h2>How to study the model answers</h2><p>The highest-value exercise is reconstructing the thinking, not memorising sentences.</p></div></div>
+  <section class="card study-card"><ol><li>Write or plan the question before opening the accordion.</li><li>Underline the model's thesis or overview.</li><li>Write 3–5 words beside each paragraph describing its job.</li><li>Circle useful <em>collocations</em>, not isolated “advanced” words.</li><li>Close the answer and rewrite the same argument in your own language.</li><li>One week later, answer the question again under full timing.</li></ol><div class="focus"><b>Do not memorise whole essays.</b> Learn the decisions behind them: what to select, what to omit, how to group information, and how to develop a position naturally.</div></section>
+
+  <div class="section-title" id="sources"><span>05</span><div><h2>Official guidance and visual sources</h2><p>The scoring guidance comes from IELTS; each Task 1 image also carries its own Wikimedia Commons or Our World in Data credit underneath.</p></div></div>
+  <section class="card study-card source-list"><p><a href="https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf" target="_blank" rel="noreferrer">Official IELTS Writing Band Descriptors</a> · <a href="https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing" target="_blank" rel="noreferrer">Official Academic Writing format</a> · <a href="https://www.ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test" target="_blank" rel="noreferrer">Official sample tasks and responses</a></p></section>
+  <p class="footer-note">IELTS Master Guide · 30-Day Academic Writing Practice</p>
 </main>
 <script src="./writing-practice-task1-models.js"></script>
 <script src="./writing-practice-task2-models.js"></script>
 <script src="./writing-practice-app.js"></script>
+<script>
+(() => {
+  const toggle = document.getElementById('themeToggle')
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('ielts-theme', theme)
+  }
+  toggle?.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'))
+})()
+</script>
 </body>
 </html>
