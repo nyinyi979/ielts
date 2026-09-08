@@ -23,11 +23,11 @@
     wrapper.className = 'practice-grid'
     wrapper.style.marginTop = '18px'
     wrapper.innerHTML = `
-      <a class="practice-card" href="./writing-practice-30-day.html" aria-label="Open the 30-day IELTS Academic Writing Band 7 to 7.5 practice pack">
+      <a class="practice-card" href="./writing-practice-30-day.html" aria-label="Open the 30-day IELTS Academic Writing Band 7 to 9 practice pack">
         <div>
-          <span class="badge badge-blue">Band 7–7.5 plan</span>
+          <span class="badge badge-blue">Band 7–9 deliberate practice</span>
           <h3>30-Day Academic Writing Practice</h3>
-          <p>Open the daily Task 1 visuals and Task 2 essay questions, with timed practice and Band 7–7.5 checklists.</p>
+          <p>Daily Task 1 visuals and Task 2 prompts with model answers, planning-first practice, high-band checklists and a rewrite-after-feedback routine.</p>
         </div>
         <span aria-hidden="true" style="font-size:1.4rem;line-height:1">→</span>
       </a>
