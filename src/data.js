@@ -1,5 +1,45 @@
 export const wordBanks = [
   {
+    id: 'post-writing-check',
+    title: 'Post-writing grammar & final check',
+    skill: 'Writing Task 1 + Task 2',
+    core: ['verbs & agreement', 'articles', 'singular/plural', 'sentence boundaries', 'word form', 'task coverage'],
+    more: [
+      'people are ✓ / people is ✗',
+      'the number of students is ✓ / are ✗',
+      'many people ✓ / much people ✗',
+      'much information ✓ / many informations ✗',
+      'advice ✓ / advices ✗',
+      'research ✓ / researches ✗ when used generally',
+      'a major problem ✓ / major problem ✗ when a singular countable noun needs an article',
+      'technology is useful ✓ / the technology is useful ✗ when speaking generally',
+      'can improve ✓ / can improves ✗',
+      'by reducing ✓ / by reduce ✗',
+      'has increased ✓ / has increase ✗',
+      'Although X is useful, it has drawbacks ✓ / Although X is useful, but it has drawbacks ✗',
+      'This causes pollution. It also increases costs. ✓ / This causes pollution, it also increases costs. ✗',
+      'contribute to ✓ / contribute for ✗',
+      'result in an increase ✓ / result to an increase ✗',
+      'a solution to the problem ✓ / solution for the problem ✗ in most IELTS contexts',
+      'have an impact on ✓ / impact to ✗',
+      'fewer cars ✓ / less cars ✗',
+      'the number of people ✓ / the amount of people ✗'
+    ],
+    patterns: [
+      '1. VERBS — circle mentally every main verb: does it agree with the subject, use the right tense, and follow modals with the base form?',
+      '2. NOUNS — check singular/plural, countable/uncountable nouns, and whether singular countable nouns need a/an/the.',
+      '3. SENTENCES — check every long sentence for a real main clause; remove comma splices, fragments, and double connectors such as “Although … but …”.',
+      '4. WORD FORM — check noun/verb/adjective forms around common families: economy/economic, benefit/beneficial, develop/development, effect/effective.',
+      '5. PREPOSITIONS — scan your repeated academic phrases: contribute to, result in, result from, responsible for, impact on, solution to, increase in.',
+      '6. COMPARISONS — check than/as … as, fewer vs less, number vs amount, and that the comparison actually names both sides clearly.',
+      '7. SPELLING & PUNCTUATION — check capitals, full stops, repeated words, obvious spelling mistakes, and missing commas after introductory clauses where needed.',
+      '8. TASK RESPONSE — re-read the prompt: did you answer every question, keep a clear position where required, and avoid adding a new main idea in the conclusion?',
+      '9. PARAGRAPHS — each body paragraph should have one clear job, explanation, and enough development; delete an off-topic sentence rather than keeping it for length.',
+      '10. TASK-SPECIFIC — Academic Task 1: confirm a clear overview and accurate units/tenses. General Task 1: confirm all bullet points and suitable tone. Task 2: confirm the required opinion is unmistakable.'
+    ],
+    note: 'Use this as a final 3–5 minute scan, not as a reason to rewrite the whole answer. Check one error family at a time; targeted passes catch more mistakes than simply rereading from the first sentence.'
+  },
+  {
     id: 'advantage',
     title: 'Advantage / benefit',
     skill: 'Writing Task 2',
